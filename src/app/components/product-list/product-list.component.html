@@ -1,0 +1,23 @@
+<div class="container">
+  <div class="filters">
+    <mat-form-field>
+      <mat-label>Search</mat-label>
+      <input matInput [(ngModel)]="searchTerm" (ngModelChange)="onSearch($event)" placeholder="Search products...">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-label>Sort by</mat-label>
+      <mat-select [(ngModel)]="sortBy" (selectionChange)="onSort($event)">
+        <mat-option value="name">Name</mat-option>
+        <mat-option value="price">Price</mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
+
+  <div class="product-grid">
+    <app-product-card 
+      *ngFor="let product of filteredProducts" 
+      [product]="product">
+    </app-product-card>
+  </div>
+</div>
